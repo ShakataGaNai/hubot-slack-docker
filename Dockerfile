@@ -1,24 +1,16 @@
-FROM ubuntu:trusty
-MAINTAINER "Pedro Cesar" <pedrocesar.ti@gmail.com>
+FROM bitnami/minideb:jessie
+MAINTAINER "Jon Davis" <jon@snowulf.com>
 EXPOSE 6379
 
 # VARIABLES
 ENV DIRECTORY "/home/hubot"
-ENV NAME "cyberdyne"
-ENV OWNER "Pedro Cesar"
-ENV DESCRIPTION "Hubot teste."
-ENV NODE_VERSION "5.0.0"
+ENV NAME "debtcat"
+ENV OWNER "Debt Owner"
+ENV DESCRIPTION "Debt Description"
+ENV NODE_VERSION "6.11.2"
 
 # INSTALL SYSTEM TOOLS
-RUN apt-get update && \
-apt-get install -y \
-sudo \
-autoconf \
-build-essential \
-ca-certificates \
-curl \
-git-core \
-redis-server
+RUN install_packages sudo autoconf build-essential ca-certificates curl git-core redis-server
 
 # USER MANAGEMENT FOR APP
 RUN useradd -d "$DIRECTORY" -ms /bin/bash hubot
@@ -43,12 +35,11 @@ ADD conf/ "$DIRECTORY"
 RUN npm install generator-hubot
 
 # INSTALL APP
-RUN yo hubot --owner="$OWNER" --name="$NAME" --description="DESCRIPTION" --defaults
+RUN yo hubot --owner="$OWNER" --name="$NAME" --description="$DESCRIPTION" --defaults
 
 # STARTING APP AND SERVICES
-RUN echo "sudo /usr/bin/redis-server /etc/redis/redis.conf ; /home/hubot/bin/hubot --adapter slack > /home/hubot/hubot.log 2>&1 &" > /home/hubot/init_app.sh
-#RUN echo "sudo /usr/bin/redis-server /etc/redis/redis.conf ; "$DIRECTORY"/bin/hubot --adapter slack > "$DIRECTORY"/hubot.log 2>&1 &" > "$DIRECTORY"/init_app.sh
-RUN chmod +x "$DIRECTORY"/init_app.sh 
+ADD go.sh "$DIRECTORY"
+RUN chmod +x "$DIRECTORY"/go.sh
 
 # START EVERYTHING AND WATCHING LOGS
-CMD bash /home/hubot/init_app.sh && tail -f /home/hubot/hubot.log
+CMD bash /home/hubot/go.sh
