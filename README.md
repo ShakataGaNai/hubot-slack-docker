@@ -1,13 +1,13 @@
 # hubot-slack-docker
 Container running GitHub Hubot with a plugin to connect to a Slack team. Some environment variables have to be set to permit connection with a Slack account in a specific channel.
 
-This repository is connect to DockerHub to create an image automaticaly. So you just need run a docker container where the source is **pedrocesarti/hubot**.
+This repository is connect to DockerHub to create an image automaticaly. So you just need run a docker container where the source is **shakataganai/hubot**.
 
 ## Running container
 To run this container, you should running the command available below:
 
 ```shell
-docker run --name mybot -it  -e HUBOT_SLACK_TOKEN='#######' -e Hubot_SLACK_TEAM='#######' -e Hubot_SLACK_BOTNAME='#######' -d pedrocesarti/hubot-slack
+docker run --name mybot -it  -e HUBOT_SLACK_TOKEN='#######' -e Hubot_SLACK_TEAM='#######' -e Hubot_SLACK_BOTNAME='#######' -d shakataganai/hubot-slack
 ```
 
 ## Environment Variable
@@ -26,6 +26,3 @@ Some Hubot scripts used to use Google API to make searches on Internet, however 
 |---------|--------|
 | **HUBOT_GOOGLE_CSE_ID** | Id to connect a Google accountToken generate for Slack integration. | 
 | **HUBOT_GOOGLE_CSE_KEY** | Account for connection team. | 
-
-Enjoy! :)
-
