@@ -31,15 +31,15 @@ RUN nodenv rehash
 # CREATE HUBOT BASE
 RUN npm config set unsafe-perm true
 RUN npm cache clean && npm install -g yo
-ADD conf/ "$DIRECTORY"
+COPY conf/ "$DIRECTORY"
 RUN npm install generator-hubot
 
 # INSTALL APP
 RUN yo hubot --owner="$OWNER" --name="$NAME" --description="$DESCRIPTION" --defaults
 
 # STARTING APP AND SERVICES
-ADD go.sh "$DIRECTORY"
-RUN chmod +x "$DIRECTORY"/go.sh
+COPY go.sh "$DIRECTORY"/go.sh
+RUN sudo chmod +x "$DIRECTORY"/go.sh
 
 # START EVERYTHING AND WATCHING LOGS
 CMD bash /home/hubot/go.sh
