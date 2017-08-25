@@ -8,6 +8,13 @@
 "hubot-redis-brain",
 "hubot-rules",
 "hubot-shipit",
-"hubot-jenkins"
+"hubot-jenkins",
+"hubot-business-cat",
+"hubot-darksky",
+"hubot-auth",
+"hubot-cron-events",
+"hubot-devops-reactions",
+"hubot-analytics",
+"hubot-bofh"
 ]
 

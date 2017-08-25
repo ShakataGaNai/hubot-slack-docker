@@ -5,6 +5,9 @@
 	"author": "Jon Davis",
 	"description": "DESCRIPTION",
 	"dependencies": {
+		"coffee-script":"~1.12.7", 
+		"connect":"~3.6.3",
+		"tough-cookie": "~2.3.2",
 		"hubot-maps": "~0.0.3",
 		"hubot-help": "~0.2.2",
 		"hubot-shipit": "~0.2.1",
@@ -18,9 +21,13 @@
 		"hubot-slack": "~4.3.4",
 		"hubot-victory": ">= 0.0.0",
 		"hubot-jenkins": ">= 0.0.0",
-		"hubot-auth": "~2.1.0",
 		"hubot-business-cat": ">= 0.0.0",
-		"hubot-darksky": ">= 0.0.0"
+		"hubot-darksky": ">= 0.0.0",
+		"hubot-auth": "~2.1.0",
+		"hubot-cron-events": ">= 0.0.0",
+		"hubot-devops-reactions": ">= 0.0.0",
+		"hubot-analytics":">= 0.0.0",
+		"hubot-bofh":">= 0.0.0"
 	},
 	"engines": {
 		"node": "6.11.2"

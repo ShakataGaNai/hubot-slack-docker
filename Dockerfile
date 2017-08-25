@@ -10,7 +10,7 @@ ENV DESCRIPTION "Debt Description"
 ENV NODE_VERSION "6.11.2"
 
 # INSTALL SYSTEM TOOLS
-RUN install_packages sudo autoconf build-essential ca-certificates curl git-core redis-server
+RUN install_packages sudo autoconf build-essential ca-certificates curl git-core redis-server python
 
 # USER MANAGEMENT FOR APP
 RUN useradd -d "$DIRECTORY" -ms /bin/bash hubot
